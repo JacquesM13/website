@@ -14,10 +14,11 @@ class Spotify:
         self.user_id = ''
         self.playlist_id = ''
         # self.authorize()
+        self.top_items = ''
 
 
     def authorize(self):
-        scopes = 'playlist-modify-public playlist-modify-private user-read-private user-read-email'  # Add more scopes as needed
+        scopes = 'playlist-modify-public playlist-modify-private user-read-private user-read-email user-top-read'  # Add more scopes as needed
         auth_url = 'https://accounts.spotify.com/authorize'
         params = {
             "client_id": self.CLIENT_ID,
@@ -82,6 +83,17 @@ class Spotify:
 
         self.user_id = response.json()['id']
 
+    def get_top_items(self, item_type= 'tracks'):
+        header = {
+            'Authorization': f"Bearer {self.access_token}",
+        }
+
+        params = {
+            "limit": 10,
+            "time_range": "medium_term"
+        }
+        response = requests.get(url=f"https://api.spotify.com/v1/me/top/{item_type}", headers= header, params= params)
+        self.top_items = response.json()
 
     def create_playlist(self, name):
         header = {

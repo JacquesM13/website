@@ -7,9 +7,21 @@
 <div class="px-4 text-center">
     <img class="img-fluid my-2" src="/static/images/Spotify.png" alt="" style="max-width:200px;">
     <div class="col-lg-6 my-2 mx-auto"><p class="lead mb-4">Want to see what your recent listening habits have been?</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="{{ url_for('spotify') }}" class="btn btn-info" role="button"></a>
+        <div class="my-2">
+            <a href="{{ url_for('spotify/artists) }}" role="button" class="btn btn-secondary">Top Artists</a>
+            <button type="button" class="btn btn-secondary">Top Songs</button>
         </div>
+        {% if top_items %}
+        <div>
+            {% for item in top_items['items'] %}
+            <p>{{ item['name'] }}</p>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="{{ url_for('spotify_login') }}" class="btn btn-success" role="button">Log in</a>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
