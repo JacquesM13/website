@@ -2,6 +2,14 @@
 
 {% block title %}Spotify{% endblock %}
 
+<!-- Your page content -->
 {% block content %}
-<h3>This is the Spotify page</h3>
+<div class="px-4 text-center">
+    <img class="img-fluid my-2" src="/static/images/Spotify.png" alt="" style="max-width:200px;">
+    <div class="col-lg-6 my-2 mx-auto"><p class="lead mb-4">Want to see what your recent listening habits have been?</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="{{ url_for('spotify') }}" class="btn btn-info" role="button"></a>
+        </div>
+    </div>
+</div>
 {% endblock %}
