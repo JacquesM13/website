@@ -8,7 +8,7 @@
     <img class="img-fluid my-2" src="/static/images/Spotify.png" alt="" style="max-width:200px;">
     <div class="col-lg-6 my-2 mx-auto"><p class="lead mb-4">Want to see what your recent listening habits have been?</p>
         {% if logged_in %}
-        <div class="my-2">
+        <div class="my-3">
             <a href="{{ url_for('spotify', top_type='artists', period=period) }}" role="button" class="btn btn-secondary">Top
                 Artists</a>
             <a href="{{ url_for('spotify', top_type='tracks', period=period) }}" role="button" class="btn btn-secondary">Top Songs</a>

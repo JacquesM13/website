@@ -42,14 +42,6 @@ def callback():
 def blog():
     return render_template('blog.html')
 
-@app.route("/keygen")
-def keygen():
-    return render_template('keygen.html')
-
-@app.route("/paletter")
-def paletter():
-    return render_template('paletter.html')
-
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
