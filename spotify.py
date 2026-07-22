@@ -14,7 +14,9 @@ class Spotify:
         self.user_id = ''
         self.playlist_id = ''
         # self.authorize()
-        self.top_items = ''
+        # self.top_items = ''
+        self.top_tracks = ''
+        self.top_artists = ''
         self.logged_in = False
 
 
@@ -84,17 +86,22 @@ class Spotify:
 
         self.user_id = response.json()['id']
 
-    def get_top_items(self, top_type: str = "artists"):
+    def get_top_items(self, top_type: str = "artists", period: str = "medium_term"):
         header = {
             'Authorization': f"Bearer {self.access_token}",
         }
 
         params = {
             "limit": 10,
-            "time_range": "medium_term"
+            "time_range": period,
         }
         response = requests.get(url=f"https://api.spotify.com/v1/me/top/{top_type}", headers= header, params= params)
-        self.top_items = response.json()
+        print(response.status_code)
+
+        if top_type == "tracks":
+            self.top_tracks = response.json()
+
+        self.top_artists = response.json()
 
     def create_playlist(self, name):
         header = {

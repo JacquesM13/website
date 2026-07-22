@@ -3,30 +3,28 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="content">
-    <main class="container-fluid px-5">
-        <div class="container-fluid px-5">
-            <div class="px-4 pt-2 mt-4 text-center">
-                <h1 class="display-5 fw-bold text-body-emphasis pb-2">
-                    Coder, Cyclist, Collector
-                </h1>
-                <div class="col-lg-7 mx-auto">
-                    <p class="lead mb-3">
-                        Ambitious and passionate Python developer, as well as a keen cyclist, and an avid learner.
-                    </p>
-                </div>
+<div class="container-fluid py-3 my-3 px-5">
+    <div class="px-4 text-center">
 
-                <!-- ✅ Removed overflow-hidden and max-height limit -->
-                <div class="container-fluid px-5">
-                    <img
-                            src="static/images/CoverCropped.png"
-                            class="img-fluid border rounded-4 shadow-lg mb-5 mx-auto d-block"
-                            alt="Home image"
-                            style="max-width: 100%; height: auto; width: min(90vw, 1200px);"
-                    >
-                </div>
-            </div>
+        <!--
+        <h1 class="display-5 fw-bold text-body-emphasis pb-2">
+            Coder, Cyclist, Collector
+        </h1>
+
+        <div class="col-lg-7 mx-auto">
+            <p class="lead mb-3">
+                Ambitious and passionate Python developer, keen cyclist, avid learner.
+            </p>
         </div>
-    </main>
+        -->
+
+        <img
+                src="{{ url_for('static', filename='images/CoverCropped.png') }}"
+                class="img-fluid border rounded-4 shadow-lg mx-auto d-block"
+                alt="Home image"
+                style="max-width: 100%; height: auto; width: min(80vw, 1100px);"
+        >
+
+    </div>
 </div>
 {% endblock %}
